@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import pic1 from "../../dist/assets/pic1.jpg";
+import pic1 from "../assets/pic1.jpg";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
