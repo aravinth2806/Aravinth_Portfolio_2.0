@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-light: 109, 127, 209;  /* #6D7FD1 */
+    --primary: 108, 143, 209;        /* #6C8FD1 */
+    --primary-dark: 107, 152, 211;   /* #6B98D3 */
+    --accent: 108, 119, 208;         /* #6C77D0 */
+    
+    --dark-bg: 10, 25, 47;           /* #0a192f */
+    --dark-secondary: 17, 34, 64;    /* #112240 */
+  }
+
+  body {
+    @apply bg-gray-50 dark:bg-[#0a192f] text-gray-900 dark:text-white transition-colors duration-300;
+  }
+
+  #root {
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .gradient-border {
+    @apply relative rounded-xl p-[1px] bg-gradient-to-r from-primary-light to-primary-dark hover:from-primary hover:to-primary-dark transition-all duration-300;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-primary-light/10 via-primary/10 to-primary-dark/10 dark:from-primary-light/5 dark:via-primary/5 dark:to-primary-dark/5;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+  }
+
+  .section-padding {
+    @apply py-24 px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-shine {
+  animation: shine 1.5s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
