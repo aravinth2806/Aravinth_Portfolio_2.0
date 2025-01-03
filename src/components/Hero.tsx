@@ -64,7 +64,7 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8"
             >
-              I build exceptional digital experiences.
+              I build exceptional digital experience.
             </motion.p>
             <div className="flex space-x-6 mb-12">
               {[
