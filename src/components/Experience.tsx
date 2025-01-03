@@ -1,10 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTypewriter, Cursor } from 'react-simple-typewriter';
+import React from "react";
+import { motion } from "framer-motion";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const Experience = () => {
   const [text] = useTypewriter({
-    words: ['Front End Developer', 'Back End Developer', 'Full Stack Developer'],
+    words: [
+      "Full Stack Developer",
+      "MERN Stack Developer",
+      "Java Developer",
+      " Mobile App Developer (React Native & Flutter) ",
+      " Spring Boot Specialist",
+    ],
     loop: true,
     delaySpeed: 2000,
     deleteSpeed: 50,
@@ -28,9 +34,9 @@ const Experience = () => {
               style={{
                 width: 300 + i * 100,
                 height: 300 + i * 100,
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
                 background: `radial-gradient(circle, rgba(109, 127, 209, 0.1) 0%, rgba(108, 143, 209, 0.05) 50%, transparent 70%)`,
               }}
               animate={{
@@ -51,7 +57,7 @@ const Experience = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl font-bold mb-8"
         >
-          I am a{' '}
+          I am a{" "}
           <motion.span
             className="inline-block relative"
             whileHover={{ scale: 1.05 }}
@@ -73,14 +79,15 @@ const Experience = () => {
           </motion.span>
           <Cursor cursorColor="rgb(109, 127, 209)" />
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
         >
-          Passionate about creating exceptional digital experiences through clean code and innovative solutions.
+          Passionate about crafting exceptional digital experiences with clean
+          code and innovative solutions.
         </motion.p>
       </motion.div>
     </section>

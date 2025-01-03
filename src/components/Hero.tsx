@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-// import pic1 from "../../dist/assets/pic1.jpg";
+import pic1 from "../../dist/assets/pic1.jpg";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -57,7 +57,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-xl text-primary-dark dark:text-primary-light mb-4"
             >
-              Hi, my name is
+              Hello, I'm
             </motion.h2>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,8 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8"
             >
-              I build exceptional digital experiences.
+              {/* I build exceptional digital experiences. */}I create
+              exceptional digital experiences as a Full stack developer.
             </motion.p>
             <div className="flex space-x-6 mb-12">
               {[
@@ -147,10 +148,10 @@ const Hero = () => {
             >
               <div className="absolute inset-0 rounded-full animate-spin-slow bg-gradient-to-r from-primary-light via-primary to-primary-dark opacity-75" />
               <img
-                // src={pic1}
+                src={pic1}
                 // alt="Profile"
                 // className="w-full h-screen rounded-full relative z-10"
-                src={`../../dist/assets/${images[currentIndex]}`}
+                // src={`../../dist/assets/${images[currentIndex]}`}
                 alt={`Slide ${currentIndex + 1}`}
                 className="w-[300px] h-[400px] md:w-[400px] md:h-[533px] lg:w-[500px] lg:h-[667px] object-cover rounded-full relative shadow-lg"
               />
