@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+// import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import pic1 from "../../dist/assets/pic10.jpg";
+import pic1 from "../../public/assets/pic10.jpg";
+import pic2 from "/assets/pic2.jpg";
 
 const Hero = () => {
   // const [currentIndex, setCurrentIndex] = useState(0);
@@ -152,6 +154,14 @@ const Hero = () => {
                 // alt="Profile"
                 // className="w-full h-screen rounded-full relative z-10"
                 src={pic1}
+                alt={"Profile"}
+                className="w-[300px] h-[400px] md:w-[400px] md:h-[533px] lg:w-[500px] lg:h-[667px] object-cover rounded-full relative shadow-lg"
+              />
+              <img
+                // src={pic1}
+                // alt="Profile"
+                // className="w-full h-screen rounded-full relative z-10"
+                src={pic2}
                 alt={"Profile"}
                 className="w-[300px] h-[400px] md:w-[400px] md:h-[533px] lg:w-[500px] lg:h-[667px] object-cover rounded-full relative shadow-lg"
               />
