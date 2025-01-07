@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-// import pic1 from "../assets/pic1.jpg";
+// import pic1 from "../../dist/assets/pic1.jpg";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = Array.from({ length: 22 }, (_, i) => `pic${i + 1}.jpg`);
+  const images = Array.from({ length: 16 }, (_, i) => `pic${i + 1}.jpg`);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -151,7 +151,7 @@ const Hero = () => {
                 // src={pic1}
                 // alt="Profile"
                 // className="w-full h-screen rounded-full relative z-10"
-                src={`../assets/${images[currentIndex]}`}
+                src={`../../dist/assets/${images[currentIndex]}`}
                 alt={`Slide ${currentIndex + 1}`}
                 className="w-[300px] h-[400px] md:w-[400px] md:h-[533px] lg:w-[500px] lg:h-[667px] object-cover rounded-full relative shadow-lg"
               />
