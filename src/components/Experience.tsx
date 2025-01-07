@@ -8,7 +8,7 @@ const Experience = () => {
       "Full Stack Developer",
       "MERN Stack Developer",
       "Java Developer",
-      " Mobile App Developer (React Native & Flutter) ",
+      " Mobile App Developer",
       " Spring Boot Specialist",
     ],
     loop: true,

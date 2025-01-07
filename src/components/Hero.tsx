@@ -7,7 +7,7 @@ import Tilt from "react-parallax-tilt";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = Array.from({ length: 16 }, (_, i) => `pic${i + 1}.jpg`);
+  const images = Array.from({ length: 8 }, (_, i) => `pic${i + 1}.jpg`);
 
   useEffect(() => {
     const interval = setInterval(() => {
