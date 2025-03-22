@@ -2,88 +2,97 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface GradientButtonProps {
-  children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary';
   href?: string;
-  variant?: 'primary' | 'secondary' | 'accent';
-  size?: 'sm' | 'md' | 'lg';
 }
 
-const gradientVariants = {
-  primary: 'from-primary-light via-primary to-primary-dark',
-  secondary: 'from-[#FF6B6B] via-[#4ECDC4] to-[#3D84A8]',
-  accent: 'from-[#FFD93D] via-[#FF6B6B] to-[#4ECDC4]'
-};
-
-const sizeVariants = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg'
-};
-
-const GradientButton: React.FC<GradientButtonProps> = ({ 
-  children, 
-  onClick, 
+const GradientButton: React.FC<GradientButtonProps> = ({
+  onClick,
   className = '',
-  href,
+  children,
   variant = 'primary',
-  size = 'md'
+  href,
 }) => {
-  const buttonContent = (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+  const gradients = {
+    primary: 'from-blue-500 via-purple-500 to-pink-500',
+    secondary: 'from-emerald-500 via-teal-500 to-cyan-500'
+  };
+
+  return (
+    <motion.button
+      onClick={onClick}
+      initial={{ opacity: 0.8 }}
+      whileHover={{ 
+        scale: 1.05,
+        opacity: 1,
+      }}
+      whileTap={{ scale: 0.98 }}
       className={`
-        relative group overflow-hidden rounded-lg
-        ${sizeVariants[size]}
+        relative group
+        px-6 py-3 rounded-full
+        overflow-hidden
         ${className}
       `}
     >
-      {/* Base gradient background */}
-      <div className={`
-        absolute inset-0 bg-gradient-to-r ${gradientVariants[variant]}
-        group-hover:animate-gradient-shift
-      `} />
-      
-      {/* Content container with glass effect */}
-      <div className="
-        relative flex items-center justify-center
-        bg-white/10 dark:bg-black/10
-        backdrop-blur-[2px]
-        group-hover:bg-transparent
-        transition-all duration-300
-      ">
-        <span className="relative z-10 text-white font-medium">
-          {children}
-        </span>
-      </div>
+      {/* Gradient background with animation */}
+      <motion.div
+        className={`
+          absolute inset-0
+          bg-gradient-to-r ${gradients[variant]}
+          transition-all duration-300
+          group-hover:scale-110
+          opacity-90 group-hover:opacity-100
+        `}
+        animate={{
+          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
 
-      {/* Hover gradient overlay */}
-      <div className={`
-        absolute inset-0 opacity-0
-        group-hover:opacity-100
-        transition-opacity duration-300
-        bg-gradient-to-r ${gradientVariants[variant]}
-        rotate-180
-      `} />
-      
+      {/* Glow effect */}
+      <motion.div
+        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Button content */}
+      <motion.div
+        className="relative z-10 flex items-center justify-center gap-2 text-white font-medium"
+        initial={{ y: 0 }}
+        whileHover={{ y: -2 }}
+      >
+        {children}
+      </motion.div>
+
       {/* Shine effect */}
-      <div className="
-        absolute inset-0 opacity-0
-        group-hover:opacity-20
-        transition-opacity duration-300
-        bg-gradient-to-r from-transparent via-white to-transparent
-        -skew-x-12
-        group-hover:animate-shine
-      " />
-    </motion.div>
-  );
-
-  return href ? (
-    <a href={href} className="inline-block">{buttonContent}</a>
-  ) : (
-    <button onClick={onClick} className="inline-block">{buttonContent}</button>
+      <motion.div
+        className="absolute inset-0 opacity-0 group-hover:opacity-50"
+        style={{
+          background: 'linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
+          top: 0,
+          left: '-100%',
+          width: '200%',
+          transform: 'translateX(0)',
+        }}
+        animate={{
+          transform: ['translateX(-100%)', 'translateX(100%)'],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          repeatDelay: 3,
+        }}
+      />
+    </motion.button>
   );
 };
 

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, FileDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import GradientButton from './common/GradientButton';
+
 // import pic1 from "../../public/assets/pic10.jpg";
 // import pic2 from "/assets/pic2.jpg";
 
@@ -112,25 +114,14 @@ const Hero = () => {
                 </motion.a>
               ))}
             </div>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 20px rgba(109, 127, 209, 0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-primary-light via-primary to-primary-dark text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+            <GradientButton
+              // onClick={downloadCV}
+              className="mt-8"
+              variant="primary"
             >
+              <FileDown className="w-5 h-5" />
               <span className="relative z-10">View My Work</span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary to-primary-light"
-                initial={{ x: "100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
+            </GradientButton>
           </motion.div>
 
           <Tilt
