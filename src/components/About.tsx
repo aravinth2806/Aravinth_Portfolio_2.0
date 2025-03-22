@@ -28,11 +28,13 @@ const About: React.FC = () => {
             My journey in tech has equipped me with a diverse skill set and a problem-solving mindset.
           </p>
           
-          <GradientButton onClick={downloadCV} className="mt-8 text-white">
-            <span className="flex items-center gap-2">
-              <FileDown className="w-5 h-5" />
-              Download CV
-            </span>
+          <GradientButton 
+            onClick={downloadCV} 
+            className="mt-8"
+            variant="primary"
+          >
+            <FileDown className="w-5 h-5" />
+            <span>Download CV</span>
           </GradientButton>
         </motion.div>
 
