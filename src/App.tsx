@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
@@ -12,6 +12,11 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/common/ScrollProgress';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <ThemeProvider>
       <AnimatePresence>
