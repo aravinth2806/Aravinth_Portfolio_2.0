@@ -7,7 +7,7 @@ interface DesktopMenuProps {
 }
 
 export const DesktopMenu: React.FC<DesktopMenuProps> = ({ activeSection }) => {
-  const menuItems = ['home', 'about', 'skills', 'projects', 'contact'];
+  const menuItems = ['home', 'about', 'skills', 'projects', 'certificates', 'contact'];
 
   return (
     <div className="hidden md:flex items-center space-x-8">

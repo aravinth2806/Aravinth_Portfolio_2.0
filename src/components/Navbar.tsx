@@ -32,6 +32,24 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Add scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Add useEffect for page load/refresh
+  useEffect(() => {
+    // Scroll to top when page loads/refreshes
+    window.onload = scrollToTop;
+    // Backup in case window.onload doesn't trigger
+    if (document.readyState === 'complete') {
+      scrollToTop();
+    }
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -46,9 +64,10 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent cursor-pointer"
+            onClick={scrollToTop}
           >
-            Portfolio
+            Aravinth | Portfolio
           </motion.div>
 
           <DesktopMenu activeSection={activeSection} />

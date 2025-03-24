@@ -11,11 +11,16 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = Array.from({ length: 6 }, (_, i) => `pic${i + 1}.jpg`);
   // Gradient Button will redirect to projects section
-    const handleViewProjects = () => {
+  const handleViewProjects = () => {
     const projectsSection = document.getElementById("projects");
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const downloadCV = () => {
+    const cvUrl = "https://drive.google.com/file/d/1jM4L59escNCucUSNJ9_ne9LjyAB_NspV/view?usp=sharing";
+    window.open(cvUrl, '_blank');
   };
 
   useEffect(() => {
@@ -24,6 +29,19 @@ const Hero = () => {
     }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, [images.length]);
+
+
+  const emailBody = `
+  Dear Aravinth,
+  
+  I came across your portfolio and would like to connect with you regarding a potential opportunity.  
+  
+  -- Replace this text with the actual message you want to send. --
+  
+  Best regards,
+  -- Replace this text with your name. --
+        `.trim();
+
   return (
     <div className="relative min-h-screen flex items-center justify-center pt-20">
       {/* Enhanced animated background elements */}
@@ -100,7 +118,7 @@ const Hero = () => {
                 },
                 {
                   icon: <Mail className="w-6 h-6" />,
-                  href: "mailto:aravinthselvaraj210@gmail.com",
+                  href: `mailto:aravinthselvaraj210@gmail.com?subject=Exciting Opportunity to Connect&body=${encodeURIComponent(emailBody)}`,
                   color: "from-[#EA4335] to-[#FBBC05]",
                 },
               ].map((item, i) => (
@@ -123,12 +141,12 @@ const Hero = () => {
             </div>
 
             <GradientButton
-              onClick={handleViewProjects}
+              onClick={downloadCV}
               className="mt-8"
               variant="primary"
             >
               <FileDown className="w-5 h-5" />
-              <span className="relative z-10">View My Work</span>
+              <span className="relative z-10">View My Resume</span>
             </GradientButton>
           </motion.div>
 

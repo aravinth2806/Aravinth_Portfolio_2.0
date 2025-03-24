@@ -3,20 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from './types';
 import GradientButton from '../common/GradientButton';
+import project1 from '/assets/project1.png';
+import project2 from '/assets/project2.png';
+import project3 from '/assets/project3.png';
 
 const projects: Project[] = [
   {
-    title: "IHG (Hospitality Management - Opera OIC)",
-    description: "Developed a hospitality management platform integrated with Opera OIC to streamline hotel operations. Built dynamic UI components using Next.js, backend services with Spring Boot, and managed data storage with Oracle Cloud. Enhanced hotel efficiency by automating reservations, guest management, and service coordination.",
-    image: "/images/ihg-project.jpg",
-    technologies: ["Next JS", "Spring Boot", "OPERA OIC", "Kafka", "Oracle Cloud"],
-    role: "Full Stack Developer",
-    live: "https://www.ihg.com/hotels/gb/en/reservation"
-  },
-  {
     title: "Aravinth Portfolio (Latest Version)",
     description: "Designed and developed a professional portfolio website showcasing skills, projects, and certifications. Utilized React.js for fast performance, Tailwind CSS for responsive design, and Netlify for hosting and database integration.",
-    image: "/images/portfolio-project.jpg",
+    image: project1,
     technologies: ["React JS", "TypeScript", "Tailwind CSS", "Netlify"],
     role: "Full Stack Developer",
     live: "https://aravinth-portfolio-v2.netlify.app/"
@@ -24,31 +19,23 @@ const projects: Project[] = [
   {
     title: "NerTekPod (Company Website - IT Solutions)",
     description: " Developed and optimized the official company website for NerTekPod, an IT solutions provider. Designed a responsive and SEO-friendly website using React.js and integrated HubSpot's HUBL language for content management and automation",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800",
+    image: project2,
     technologies: ["React JS", "HubSpot (HUBL)"],
     role: "Full Stack Developer",
     live: "https://www.nertekpod.com/"
   },
   {
-    title: "Cemex (Construction Management - US Market)",
-    description: "Led the development of a construction management platform for US civil engineers. Built full UI pages using React.js and Liferay, and contributed to backend services with Node.js, Express.js, and MongoDB. Played a key role in developing the mobile application using React Native.",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800",
-    technologies: ["React JS", "Node JS", "Express JS", "MongoDB", "Liferay"],
-    role: "Full Stack Developer",
-    live: "https://www.cemexmexico.com/"
-  },
-  {
     title: "Chosen Care Group - Availability Planner (Care Management - UK Market)",
     description: "A feature-rich e-commerce platform with real-time inventory management and secure payment processing.",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800",
+    image: project3,
     technologies: ["React JS", "React Native", "Redux", "Node JS", "Express JS", "MongoDB",],
     role: "Full Stack Developer",
-    live: "https://availabilityplanner.com/"
+    live: "https://play.google.com/store/apps/details?id=com.availability.planner&hl=en"
   }
 ];
 
 export const Projects: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(2);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -113,7 +100,7 @@ export const Projects: React.FC = () => {
                     <span className="px-4 py-2 rounded-md bg-gradient-to-r from-primary-light/10 to-primary-dark/10 text-gray-700 dark:text-gray-300">
                       {projects[currentIndex].role}
                     </span>
-                    <a 
+                    <a
                       href={projects[currentIndex].live}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -148,11 +135,10 @@ export const Projects: React.FC = () => {
             <button
               key={i}
               onClick={() => setCurrentIndex(i)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                i === currentIndex
-                  ? 'bg-primary'
-                  : 'bg-gray-300 dark:bg-gray-700'
-              }`}
+              className={`w-3 h-3 rounded-full transition-colors ${i === currentIndex
+                ? 'bg-primary'
+                : 'bg-gray-300 dark:bg-gray-700'
+                }`}
             />
           ))}
         </div>
