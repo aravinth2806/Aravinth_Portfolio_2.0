@@ -9,7 +9,14 @@ import GradientButton from './common/GradientButton';
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = Array.from({ length: 8 }, (_, i) => `pic${i + 1}.jpg`);
+  const images = Array.from({ length: 6 }, (_, i) => `pic${i + 1}.jpg`);
+  // Gradient Button will redirect to projects section
+    const handleViewProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -83,17 +90,17 @@ const Hero = () => {
               {[
                 {
                   icon: <Github className="w-6 h-6" />,
-                  href: "https://github.com",
+                  href: "https://github.com/aravinth2806",
                   color: "from-[#6e5494] to-[#24292e]",
                 },
                 {
                   icon: <Linkedin className="w-6 h-6" />,
-                  href: "https://linkedin.com",
+                  href: "https://www.linkedin.com/in/aravinth-s-fullstackdeveloper/",
                   color: "from-[#0077b5] to-[#00a0dc]",
                 },
                 {
                   icon: <Mail className="w-6 h-6" />,
-                  href: "mailto:your.email@example.com",
+                  href: "mailto:aravinthselvaraj210@gmail.com",
                   color: "from-[#EA4335] to-[#FBBC05]",
                 },
               ].map((item, i) => (
@@ -114,8 +121,9 @@ const Hero = () => {
                 </motion.a>
               ))}
             </div>
+
             <GradientButton
-              // onClick={downloadCV}
+              onClick={handleViewProjects}
               className="mt-8"
               variant="primary"
             >

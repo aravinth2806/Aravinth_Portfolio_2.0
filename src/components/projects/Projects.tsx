@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from './types';
@@ -6,33 +6,49 @@ import GradientButton from '../common/GradientButton';
 
 const projects: Project[] = [
   {
-    title: "Modern Web Application",
-    description: "A full-stack application built with React and Node.js, featuring real-time updates and modern UI components.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800",
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    github: "https://github.com",
-    live: "https://project1.com"
+    title: "IHG (Hospitality Management - Opera OIC)",
+    description: "Developed a hospitality management platform integrated with Opera OIC to streamline hotel operations. Built dynamic UI components using Next.js, backend services with Spring Boot, and managed data storage with Oracle Cloud. Enhanced hotel efficiency by automating reservations, guest management, and service coordination.",
+    image: "/images/ihg-project.jpg",
+    technologies: ["Next JS", "Spring Boot", "OPERA OIC", "Kafka", "Oracle Cloud"],
+    role: "Full Stack Developer",
+    live: "https://www.ihg.com/hotels/gb/en/reservation"
   },
   {
-    title: "E-Commerce Platform",
-    description: "Feature-rich e-commerce platform with real-time inventory management and secure payment processing.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Redis"],
-    github: "https://github.com",
-    live: "https://project2.com"
+    title: "Aravinth Portfolio (Latest Version)",
+    description: "Designed and developed a professional portfolio website showcasing skills, projects, and certifications. Utilized React.js for fast performance, Tailwind CSS for responsive design, and Netlify for hosting and database integration.",
+    image: "/images/portfolio-project.jpg",
+    technologies: ["React JS", "TypeScript", "Tailwind CSS", "Netlify"],
+    role: "Full Stack Developer",
+    live: "https://aravinth-portfolio-v2.netlify.app/"
   },
   {
-    title: "Team Collaboration Tool",
-    description: "Real-time collaboration platform for remote teams with video conferencing and document sharing.",
+    title: "NerTekPod (Company Website - IT Solutions)",
+    description: " Developed and optimized the official company website for NerTekPod, an IT solutions provider. Designed a responsive and SEO-friendly website using React.js and integrated HubSpot's HUBL language for content management and automation",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800",
-    technologies: ["React", "Socket.io", "Express", "MongoDB"],
-    github: "https://github.com",
-    live: "https://project3.com"
+    technologies: ["React JS", "HubSpot (HUBL)"],
+    role: "Full Stack Developer",
+    live: "https://www.nertekpod.com/"
+  },
+  {
+    title: "Cemex (Construction Management - US Market)",
+    description: "Led the development of a construction management platform for US civil engineers. Built full UI pages using React.js and Liferay, and contributed to backend services with Node.js, Express.js, and MongoDB. Played a key role in developing the mobile application using React Native.",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800",
+    technologies: ["React JS", "Node JS", "Express JS", "MongoDB", "Liferay"],
+    role: "Full Stack Developer",
+    live: "https://www.cemexmexico.com/"
+  },
+  {
+    title: "Chosen Care Group - Availability Planner (Care Management - UK Market)",
+    description: "A feature-rich e-commerce platform with real-time inventory management and secure payment processing.",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800",
+    technologies: ["React JS", "React Native", "Redux", "Node JS", "Express JS", "MongoDB",],
+    role: "Full Stack Developer",
+    live: "https://availabilityplanner.com/"
   }
 ];
 
 export const Projects: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(2);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -75,7 +91,7 @@ export const Projects: React.FC = () => {
                   />
                 </div>
                 <div className="md:w-1/2 p-8">
-                  <motion.h3 
+                  <motion.h3
                     className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent"
                   >
                     {projects[currentIndex].title}
@@ -94,12 +110,19 @@ export const Projects: React.FC = () => {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <GradientButton href={projects[currentIndex].github}>
-                      View Code
-                    </GradientButton>
-                    <GradientButton href={projects[currentIndex].live}>
-                      Live Demo
-                    </GradientButton>
+                    <span className="px-4 py-2 rounded-md bg-gradient-to-r from-primary-light/10 to-primary-dark/10 text-gray-700 dark:text-gray-300">
+                      {projects[currentIndex].role}
+                    </span>
+                    <a 
+                      href={projects[currentIndex].live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <GradientButton>
+                        Live Demo
+                      </GradientButton>
+                    </a>
                   </div>
                 </div>
               </div>

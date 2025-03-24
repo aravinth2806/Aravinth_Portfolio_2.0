@@ -7,8 +7,8 @@ const Experience = () => {
     words: [
       "Full Stack Developer",
       "MERN Stack Specialist",
-      "Mobile App Developer",
-      "Spring Boot Developer",
+      "React Native Developer",
+      "HubSpot Developer",
     ],
     loop: true,
     delaySpeed: 2000,

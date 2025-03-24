@@ -1,88 +1,148 @@
-import React, { useRef, useState } from 'react';
-import { Send } from 'lucide-react';
+import React, { FormEvent, useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!formRef.current) return;
+    setIsLoading(true);
 
     try {
-      setLoading(true);
-      await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        formRef.current,
-        'YOUR_PUBLIC_KEY'
-      );
-      toast.success('Message sent successfully!');
-      formRef.current.reset();
+      // Add artificial delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Format the email body with proper spacing and structure
+      const emailBody = `
+Dear Aravinth,
+
+I came across your portfolio and would like to connect with you regarding a potential opportunity.  
+
+Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}
+
+Best regards,
+${formData.name}
+      `.trim();
+
+      // Construct the mailto URL with encoded parameters
+      const mailtoLink = `mailto:aravinthselvaraj210@gmail.com?subject=Exciting Opportunity to Connect&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open default email client
+      window.location.href = mailtoLink;
+
+      // Show success message
+      toast.success('Email client opened successfully!');
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Something went wrong. Please try again.');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
     <motion.form
-      ref={formRef}
       onSubmit={handleSubmit}
       className="space-y-6"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="relative">
-        <motion.input
-          whileFocus={{ scale: 1.01 }}
+      <div>
+        <input
           type="text"
-          name="user_name"
-          required
-          className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-light dark:focus:border-primary-dark focus:ring-2 focus:ring-primary-light/20 dark:focus:ring-primary-dark/20 outline-none transition-all duration-300"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           placeholder="Your Name"
+          required
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-light dark:bg-gray-800 dark:border-gray-600 dark:text-white"
         />
       </div>
-      <div className="relative">
-        <motion.input
-          whileFocus={{ scale: 1.01 }}
+
+      <div>
+        <input
           type="email"
-          name="user_email"
-          required
-          className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-light dark:focus:border-primary-dark focus:ring-2 focus:ring-primary-light/20 dark:focus:ring-primary-dark/20 outline-none transition-all duration-300"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
           placeholder="Your Email"
+          required
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-light dark:bg-gray-800 dark:border-gray-600 dark:text-white"
         />
       </div>
-      <div className="relative">
-        <motion.textarea
-          whileFocus={{ scale: 1.01 }}
+
+      <div>
+        <textarea
           name="message"
-          required
-          rows={4}
-          className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-primary-light dark:focus:border-primary-dark focus:ring-2 focus:ring-primary-light/20 dark:focus:ring-primary-dark/20 outline-none transition-all duration-300"
+          value={formData.message}
+          onChange={handleChange}
           placeholder="Your Message"
-        ></motion.textarea>
+          required
+          rows={6}
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-light dark:bg-gray-800 dark:border-gray-600 dark:text-white resize-none"
+        />
       </div>
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className="w-full bg-gradient-to-r from-primary-light to-primary-dark hover:from-primary hover:to-primary-dark text-white font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 disabled:opacity-70 shadow-lg hover:shadow-xl transition-all duration-300"
-        disabled={loading}
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="w-full bg-gradient-to-r from-primary-light to-primary-dark text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
       >
-        {loading ? (
-          'Sending...'
-        ) : (
+        {isLoading ? (
           <>
-            <span>Send Message</span>
-            <Send className="w-5 h-5" />
+            <svg 
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24"
+            >
+              <circle 
+                className="opacity-25" 
+                cx="12" 
+                cy="12" 
+                r="10" 
+                stroke="currentColor" 
+                strokeWidth="4"
+              />
+              <path 
+                className="opacity-75" 
+                fill="currentColor" 
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+            Sending...
           </>
+        ) : (
+          'Send Message'
         )}
-      </motion.button>
+      </button>
     </motion.form>
   );
 };

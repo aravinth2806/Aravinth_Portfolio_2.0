@@ -7,7 +7,7 @@ import { services } from './about/services.data';
 
 const About: React.FC = () => {
   const downloadCV = () => {
-    const cvUrl = "https://your-cv-url.com/cv.pdf";
+    const cvUrl = "https://drive.google.com/file/d/1JKJs0h85tvIBQiKirJhsX2NV7ItW8EMd/view?usp=sharing";
     window.open(cvUrl, '_blank');
   };
 
@@ -27,9 +27,9 @@ const About: React.FC = () => {
             I'm a passionate full-stack developer with expertise in building modern web applications.
             My journey in tech has equipped me with a diverse skill set and a problem-solving mindset.
           </p>
-          
-          <GradientButton 
-            onClick={downloadCV} 
+
+          <GradientButton
+            onClick={downloadCV}
             className="mt-8"
             variant="primary"
           >
