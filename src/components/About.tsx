@@ -7,7 +7,7 @@ import { services } from './about/services.data';
 
 const About: React.FC = () => {
   const downloadCV = () => {
-    const cvUrl = "https://drive.google.com/file/d/1JKJs0h85tvIBQiKirJhsX2NV7ItW8EMd/view?usp=sharing";
+    const cvUrl = "https://drive.google.com/file/d/1jM4L59escNCucUSNJ9_ne9LjyAB_NspV/view?usp=sharing";
     window.open(cvUrl, '_blank');
   };
 
@@ -24,18 +24,18 @@ const About: React.FC = () => {
             About Me
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'm a passionate full-stack developer with expertise in building modern web applications.
+            I'm a passionate full-stack developer with expertise in building modern web and mobile applications.
             My journey in tech has equipped me with a diverse skill set and a problem-solving mindset.
           </p>
 
-          <GradientButton
+          {/* <GradientButton
             onClick={downloadCV}
             className="mt-8"
             variant="primary"
           >
             <FileDown className="w-5 h-5" />
             <span>Download CV</span>
-          </GradientButton>
+          </GradientButton> */}
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">

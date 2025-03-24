@@ -15,7 +15,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const menuItems = ['home', 'about', 'skills', 'projects', 'contact'];
+  const menuItems = ['home', 'about', 'skills', 'projects', 'certificates', 'contact'];
 
   return (
     <motion.div

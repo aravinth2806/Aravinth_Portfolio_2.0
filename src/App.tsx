@@ -10,7 +10,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollProgress from './components/common/ScrollProgress';
-
+import Certificates from './components/Certificates';
 const App: React.FC = () => {
   useEffect(() => {
     // Scroll to top on page load
@@ -42,6 +42,9 @@ const App: React.FC = () => {
             </section>
             <section id="projects">
               <Projects />
+            </section>
+            <section id="certificates">
+              <Certificates />
             </section>
             <section id="contact">
               <Contact />

@@ -18,6 +18,11 @@ const Hero = () => {
     }
   };
 
+  const downloadCV = () => {
+    const cvUrl = "https://drive.google.com/file/d/1jM4L59escNCucUSNJ9_ne9LjyAB_NspV/view?usp=sharing";
+    window.open(cvUrl, '_blank');
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -136,12 +141,12 @@ const Hero = () => {
             </div>
 
             <GradientButton
-              onClick={handleViewProjects}
+              onClick={downloadCV}
               className="mt-8"
               variant="primary"
             >
               <FileDown className="w-5 h-5" />
-              <span className="relative z-10">View My Work</span>
+              <span className="relative z-10">View My Resume</span>
             </GradientButton>
           </motion.div>
 
